@@ -230,17 +230,17 @@ const calculateWinner = function(squares) {
 		[0, 4, 8],
 		[2, 4, 6],
 	];
-	// TODO: 改成不使用迭代器的方式
-	for (let i = 0; i < lines.length; i++ ) {
-		const [a, b, c] = lines[i];
+	let winner;
+	lines.map((win,i) => {
+		let [a, b, c] = lines[i];
 		if (squares[a]
 			&& (squares[a] === squares[b])
 			&& (squares[a] === squares[c])
 		) {
-			return { user: squares[a], line: [a, b, c] };
+			winner = { user: squares[a], line: [a, b, c] };
 		}
-	}
-	return null;
+	});
+	return winner;
 }
 
 //判断落子位置并返回坐标值
